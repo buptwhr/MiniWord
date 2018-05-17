@@ -25,8 +25,13 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-//完成打开文件
+//完成新建文件   新建 老曹写完了
+void MainWindow::on_actionNew_triggered()
+{
+    d_new * new_d = new d_new;
+    new_d->show();
+}
+//完成打开文件    不完善，提示新建
 void MainWindow::on_actionOpen_triggered()//点击打开文件
 {
     DialogOpen * open=new DialogOpen;
@@ -36,6 +41,13 @@ void MainWindow::on_actionOpen_triggered()//点击打开文件
 void MainWindow::receivefilename(QString filename)//打开指定文件 slot function
 {
     t->Text_Set(filename.toStdString());
+}
+//完成保存   老曹正在写
+void MainWindow::on_actionSave_triggered()
+{
+    d_save * save_d =new d_save;
+    save_d->lineedit_settext(QString::fromStdString(t->filename));
+    save_d->show();
 }
 //完成替换操作
 void MainWindow::on_actionreplace_triggered()
@@ -207,5 +219,9 @@ void MainWindow::on_actionexit_triggered()
 {
    exit(0);
 }
+
+
+
+
 
 

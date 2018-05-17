@@ -12,3 +12,7 @@ d_save::~d_save()
 {
     delete ui;
 }
+
+void d_save::lineedit_settext(QString s){
+    ui->lineEdit->setText(s);
+}

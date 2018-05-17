@@ -5,6 +5,8 @@
 #include <QMainWindow>
 #include <dialogopen.h>
 #include <d_replace.h>
+#include <d_new.h>
+#include <d_save.h>
 #include <datastruct.h>
 #include <QMouseEvent>
 #include <QTimer>
@@ -39,6 +41,10 @@ private slots:
 
 
 
+
+    void on_actionNew_triggered();
+
+    void on_actionSave_triggered();
 
 private:
     Ui::MainWindow *ui;
