@@ -6,6 +6,7 @@ DialogOpen::DialogOpen(QWidget *parent) :
     ui(new Ui::DialogOpen)
 {
     ui->setupUi(this);
+    this->setWindowTitle("打开");
 }
 
 DialogOpen::~DialogOpen()

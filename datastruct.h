@@ -67,8 +67,35 @@ public:
 };
 
 
+
+
+
+
+
+
 class Block{//指示文本中一块内容的类
 public: friend class Text;
+    Block(){
+        line_begin = line_end = position_begin = position_end = 0;
+    }
+    bool Block_Set(int y1, int y2, int x1 , int x2, std::string &s){
+        line_begin = y1;
+        line_end = y2;
+        position_begin = x1;
+        position_end = x2;
+        block_string = s;
+        return well_set();
+    }
+    void Reset(){
+        line_begin = line_end = position_begin = position_end = 0;
+        block_string = "";
+    }
+
+    bool well_set(){
+        if(line_begin == line_end && position_begin == position_end)
+            return 0;
+        return 1;
+    }
 private:
     int line_begin;//起始行
     int line_end;//结束行
@@ -80,18 +107,42 @@ private:
 
 
 
+
+
+
+
+
+class Cursor{
+private:
+    int line;
+    int position;
+    int English;
+    int Chinese;
+public:
+    friend class Text;
+    friend class MainWindow;
+    Cursor():line(1), position(1), English(0), Chinese(0){}
+    Cursor(int l, int p): line(l), position(p), English(0), Chinese(0){}
+};
+
+
+
+
+
+
+
 class Text{//代表文本的主数据结构
 public:
+    enum direction {left,right,up,down};
     friend class MainWindow;
-    Text():block_text(){
-
+    Text():block(), cursor(1,1){
        headnode = NULL;
        tailnode = NULL;
        lines = 0;
     }
-	Text(std::string Filename) {
-		this->Text_Set(Filename);	
-	}
+    Text(std::string Filename) {
+       this->Text_Set(Filename);
+    }
     ~Text(){//析构函数
         TextNode *curnode = headnode;
         while(curnode){
@@ -101,18 +152,22 @@ public:
         }
         file.close();
     }
+    void Remove_BOM(char *buffer);
+    void Add_BOM(char *buffer);
+    void Cursor_Set(int l,int p){cursor=Cursor(l,p);};//测试用，删
     void InputFilename();
-    void New_File();
-    void Save_File(bool Name_Choice);
-    void Quit_File();
-    void Text_Set(std::string Filename);//根据提供文件名创建此类
-    bool Insert(int line, int position, std::string s);//向文本中某行某位置插入字符串
-    bool Delete(int line, int position);//删除某行某位置的一个字符
-    bool Index(std::string string_aim, int line, int position, int &aimline, int &aimposition);//从某行某位置后面开始匹配目标字符串，若成功则返回字串的头位置。
+    void New_File(std::string File_Name);
+    void Save_File(std::string New_Name);
+	void Quit_File();
+    bool Text_Set(std::string Filename);//根据提供文件名创建此类
     bool Replace(std::string string_aim, std::string string_replace, int position, int line);//从某行某位置后面开始匹配目标字符串并把其用另一个串代替
-    bool Block_Set(int line_begin, int line_end, int position_begin, int positon_end);//设置块
-    bool Block_Delete();//删除块
-    bool Block_Copy();//复制块
+    bool Index(std::string string_aim, int line, int position, int &aimline, int &aimposition);//从某行某位置后面开始匹配目标字符串，若成功则返回字串的头位置。
+    void MoveCursor(direction dir);
+    void Insert_at_Cursor(std::string s);
+    void Delete_at_Cursor(direction dir);
+    void MoveCursor_to_start();
+    void MoveCursor_to_end();
+    void Count_CE();
     void Output();//输出文本全部内容
     void Clear(){//清除数据
         TextNode *curnode = headnode;
@@ -123,16 +178,30 @@ public:
         }
         file.close();
         filename ="";
-        lines = 1 ;
-        headnode = new TextNode;
+        lines = 0;
+        headnode = NULL;
         tailnode = headnode;
     }
-private:
+    int Get_Max_Length(){
+        int max_length = 0;
+        TextNode *cur = headnode;
+        while(cur){
+            max_length = max_length > cur->length ? max_length : cur->length;
+            cur = cur->nextnode;
+        }
+        return max_length;
+    }
+    bool Block_Set(int line_begin, int position_begin, int line_end,  int positon_end);//设置块
+    void Block_Delete(int line_begin, int position_begin, int line_end,  int positon_end);//删除块
+private:      
     std::fstream file;//文件
     std::string filename;//当前文件名
     TextNode* headnode;//头结点
     TextNode* tailnode;//尾结点
     int lines;//行数
-    Block block_text;//块
-};
+    Block block;//块
+    Cursor cursor;
+    bool Insert(int line, int position, std::string s);//向文本中某行某位置插入字符串
+    bool Delete(int line, int position);//删除某行某位置的一个字符
 
+};

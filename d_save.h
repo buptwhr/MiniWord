@@ -14,7 +14,11 @@ class d_save : public QDialog
 public:
     explicit d_save(QWidget *parent = 0);
     ~d_save();
-
+    void lineedit_settext(QString);
+private slots:
+    void on_buttonBox_accepted();
+signals:
+    void sendfilename(QString);
 private:
     Ui::d_save *ui;
 };

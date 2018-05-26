@@ -13,43 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <widget class="QScrollBar" name="verticalScrollBar">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>0</y>
-      <width>16</width>
-      <height>160</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>100</number>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-    <property name="sliderPosition">
-     <number>0</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QScrollBar" name="horizontalScrollBar">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>260</y>
-      <width>160</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-  </widget>
+  <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -99,22 +63,22 @@
   </widget>
   <action name="actionNew">
    <property name="text">
-    <string>新建</string>
+    <string>新建(ctrl+N)</string>
    </property>
   </action>
   <action name="actionOpen">
    <property name="text">
-    <string>打开</string>
+    <string>打开(ctrl+O)</string>
    </property>
   </action>
   <action name="actionSave">
    <property name="text">
-    <string>保存</string>
+    <string>保存(ctrl+S)</string>
    </property>
   </action>
   <action name="actioninstruction">
    <property name="text">
-    <string>使用说明</string>
+    <string>使用说明(F1)</string>
    </property>
   </action>
   <action name="actiondevelopper">
@@ -129,27 +93,27 @@
   </action>
   <action name="actionctrl_x">
    <property name="text">
-    <string>剪切</string>
+    <string>剪切(ctrl+X)</string>
    </property>
   </action>
   <action name="actionctrl_c">
    <property name="text">
-    <string>复制</string>
+    <string>复制(ctrl+C)</string>
    </property>
   </action>
   <action name="actionctrl_v">
    <property name="text">
-    <string>粘贴</string>
+    <string>粘贴(ctrl+V)</string>
    </property>
   </action>
   <action name="actionfind">
    <property name="text">
-    <string>查找</string>
+    <string>查找(ctrl+F)</string>
    </property>
   </action>
   <action name="actionreplace">
    <property name="text">
-    <string>替换</string>
+    <string>替换(ctrl+R)</string>
    </property>
   </action>
   <action name="actiontongji">

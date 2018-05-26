@@ -6,6 +6,7 @@ d_find::d_find(QWidget *parent) :
     ui(new Ui::d_find)
 {
     ui->setupUi(this);
+    this->setWindowTitle("查找");
 }
 
 d_find::~d_find()

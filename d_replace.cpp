@@ -7,6 +7,7 @@ d_replace::d_replace(QWidget *parent) :
     ui(new Ui::d_replace)
 {
     ui->setupUi(this);
+    this->setWindowTitle("替换");
 }
 
 d_replace::~d_replace()

@@ -32,7 +32,9 @@ SOURCES += \
     d_find.cpp \
     d_insert.cpp \
     d_replace.cpp \
-    d_save.cpp
+    d_save.cpp \
+    d_new.cpp \
+    FileOperation.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,7 +44,8 @@ HEADERS += \
     d_find.h \
     d_insert.h \
     d_replace.h \
-    d_save.h
+    d_save.h \
+    d_new.h
 
 FORMS += \
         mainwindow.ui \
@@ -55,4 +58,5 @@ FORMS += \
     d_find.ui \
     d_insert.ui \
     d_replace.ui \
-    d_save.ui
+    d_save.ui \
+    d_new.ui

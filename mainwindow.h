@@ -5,12 +5,14 @@
 #include <QMainWindow>
 #include <dialogopen.h>
 #include <d_replace.h>
+#include <d_new.h>
+#include <d_save.h>
 #include <datastruct.h>
 #include <QMouseEvent>
 #include <QTimer>
-#include <QScrollBar>
 #include <QTime>
 #include <QLabel>
+#include <QScrollArea>
 
 namespace Ui {
 class MainWindow;
@@ -28,24 +30,31 @@ private slots:
 
     void on_actionOpen_triggered();
     void receivefilename(QString filename);
-
+    void receiveNewfilename(QString filename);
+    void receiveSavefilename(QString filename);
     void on_actionreplace_triggered();
     void f_replace(QString s1,QString s2);
 
     void graphic_datastruct();
-    void wheelEvent(QWheelEvent *event);
+  //  void wheelEvent(QWheelEvent *event);
     void on_actionexit_triggered();
-
-
-
-
+    void on_actionNew_triggered();
+    void on_actionSave_triggered();
+//
+    void keyPressEvent(QKeyEvent *event);
+    void inputMethodEvent(QInputMethodEvent *event);
+    void on_actioninstruction_triggered();
 
 private:
     Ui::MainWindow *ui;
     Text* t;//主数据结构的指针
     QLabel **label;
+    QScrollArea * scrollArea;
+    QWidget * screen;
+    QLabel * cursor;
     int labelnum;
     int state;
+
 protected:
   //  void mouseMoveEvent(QMouseEvent *event);
 };

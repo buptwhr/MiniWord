@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>d_save</class>
- <widget class="QDialog" name="d_save">
+ <class>d_new</class>
+ <widget class="QDialog" name="d_new">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>347</width>
-    <height>165</height>
+    <width>297</width>
+    <height>152</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>110</y>
+     <x>60</x>
+     <y>90</y>
      <width>221</width>
      <height>41</height>
     </rect>
@@ -29,27 +29,27 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>201</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>输入要保存的文件名</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>60</y>
-     <width>291</width>
+     <y>50</y>
+     <width>251</width>
      <height>21</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>输入新建文件名</string>
    </property>
   </widget>
  </widget>
@@ -58,7 +58,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>d_save</receiver>
+   <receiver>d_new</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -74,7 +74,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>d_save</receiver>
+   <receiver>d_new</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
